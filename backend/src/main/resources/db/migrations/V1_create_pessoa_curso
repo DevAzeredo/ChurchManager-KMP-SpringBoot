@@ -1,0 +1,22 @@
+CREATE TABLE pessoa (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    data_nascimento DATE,
+    endereco VARCHAR(255),
+    telefone VARCHAR(20),
+    email VARCHAR(255),
+    profissao VARCHAR(255)
+);
+
+CREATE TABLE curso (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    data DATE NOT NULL
+);
+
+CREATE TABLE curso_pessoa (
+    curso_id INT REFERENCES curso(id),
+    pessoa_id INT REFERENCES pessoa(id),
+    PRIMARY KEY (curso_id, pessoa_id)
+);
